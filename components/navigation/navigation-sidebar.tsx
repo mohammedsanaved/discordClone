@@ -9,9 +9,11 @@ import { ModeToggle } from "@/components/mode-toggle";
 import { UserButton } from "@clerk/nextjs";
 const NavigationSidebar = async () => {
   const profile = await currentProfile();
+  console.log("Side Bar Added");
   if (!profile) {
     return redirect("/");
   }
+
   const server = await db.server.findMany({
     where: {
       members: {
@@ -27,7 +29,7 @@ const NavigationSidebar = async () => {
       <Separator className='h-[2px] bg-zinc-300 dark:bg-zinc-700 rounded-md w-10 mx-auto' />
       <ScrollArea className='flex-1 w-full'>
         {server.map((server) => (
-          <div key={server.id} className='flex items-center'>
+          <div key={server.id} className='flex items-center mt-2'>
             {/* <ServerIcon className='h-6 w-6 mr-3' server={server} /> */}
             {/* <div>{server.name}</div> */}
             <NavigationItem
