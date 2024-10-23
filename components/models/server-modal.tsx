@@ -49,7 +49,6 @@ const ServerModel = () => {
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       await axios.post("/api/servers", values);
-      alert("Server created successfully!");
       onClose();
       form.reset();
       router.refresh();
